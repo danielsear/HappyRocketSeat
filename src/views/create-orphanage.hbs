@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8" />
@@ -61,15 +61,18 @@
           </div>
           <div class="input-block">
             <label for="whatsapp">Numero de whatsapp: </label>
-            <input id="whatsapp" type="text" name="whatsapp" required />
+            <input id="whatsapp" type="text" name="whatsapp" onchange="Validazap(event)" required />
+            <span type='hidden' id="spanzap">Campo invalido</span>
           </div>
           <div class="input-block">
             <label for="images">Foto: </label>
             <div class="images-upload" id="images">
               <div class="new-upload">
-                <input type="text" name="images" placeholder="Cole o link da foto aqui" required type='url' />
+                <input type="text" name="images" onchange="ValidaUrl(event)"
+                  placeholder="Cole o link da foto aqui: https://...." required type="url" pattern="https?://.+" />
                 <span onclick="deleteFild(event)"><img src="/images/x.svg" alt="Exclusão de fotos" /></span>
               </div>
+              <span type='hidden' id="spanfoto">Campo invalido</span>
             </div>
             <button onclick="addPhotoField()" class="button-images" type="button">
               <img src="/images/logomais.svg" alt="Nova imagem" />

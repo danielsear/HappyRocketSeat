@@ -90,3 +90,72 @@ function validate(event) {
   console.log(latitude, longitude);
 }
 */
+
+function Validazap(event) {
+  console.log(event.target.value);
+
+  const validarNumero = event.target.value;
+  const vNumero = validarNumero.replace(/\D/g, "");
+  const valid = document.querySelector("span#spanzap");
+  const val = vNumero.substr(0, 15).split("");
+  console.log(val);
+  if (val.length < 11 || val.length > 11) {
+    // const valid = document.querySelector("#whatsapp");
+    //valid.classList.add("validazap");
+
+    /*
+    const input = document.querySelector("input#whatsapp");
+    const ClassElementoErro = "validazap";
+    const CriaCampo = document.createElement("div");
+    CriaCampo.textContent = "Telefone errado";
+    CriaCampo.className = ClassElementoErro;
+    input.after(CriaCampo);
+
+    console.log(input);
+    */
+    //conseguir add atribudo de validar campo
+    document.querySelector("span#spanzap").setAttribute("type", "text");
+    document.querySelector("span#spanzap").setAttribute("class", "spanzap");
+  }
+  if (valid.className == "spanzap" && val.length == 11) {
+    document.querySelector("span#spanzap").removeAttribute("type", "text");
+    document.querySelector("span#spanzap").removeAttribute("class", "spanzap");
+  }
+}
+
+function ValidaUrl(event) {
+  //console.log(event.target.value);
+  const valida = event.target.value;
+  // const validando = valida.substr(0, 50).split("");
+  //console.log(validando);
+  //const reg = `^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(?([^#]*))?(#(.*))?`;
+  //var url = "http://xxx.domain.com";
+  // console.log(/[^.]+/.exec(url)[0].substr(7));  xxx
+  // const validando = reg.exec(valida);
+  //console.log(validando);
+  /* const regex = new RegeExp(
+    `^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(?([^#]*))?(#(.*))?`
+  );
+  regex.match(validando);
+  */
+  const pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  //console.log(pattern.test(valida));
+  const validando = pattern.test(valida);
+  if (validando == false) {
+    document.querySelector("span#spanfoto").setAttribute("type", "text");
+    document.querySelector("span#spanfoto").setAttribute("class", "spanfoto");
+  } else {
+    document.querySelector("span#spanfoto").removeAttribute("type", "text");
+    document
+      .querySelector("span#spanfoto")
+      .removeAttribute("class", "spanfoto");
+  }
+}

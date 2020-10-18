@@ -50,7 +50,7 @@ module.exports = {
     return response.render("create-orphanage");
   },
   async saveOrphanage(request, response) {
-    console.log(request.body);
+    console.log(request.body); //averiguar se existe orphanatos adicionados
     const fields = request.body;
     //validar se todos os campos estao preenchidos
     //console.log(Object.values(fields)); ele pega os valores do objeto e retorna um array
